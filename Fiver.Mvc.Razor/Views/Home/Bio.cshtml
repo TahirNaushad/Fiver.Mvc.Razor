@@ -1,1 +1,5 @@
-﻿<p>Hello, my name is James Bond</p>
+﻿@using Fiver.Mvc.Razor.Models.Home
+@model AboutViewModel
+@inject IGreeter GreeterService
+
+<p>@GreeterService.Greet(Model.Firstname, Model.Surname)</p>

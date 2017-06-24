@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Fiver.Mvc.Razor.Models.Home;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -17,6 +18,7 @@ namespace Fiver.Mvc.Razor
         public void ConfigureServices(
             IServiceCollection services)
         {
+            services.AddScoped<IGreeter, Greeter>();
             services.AddMvc();
         }
 
