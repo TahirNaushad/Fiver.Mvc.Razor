@@ -1,0 +1,72 @@
+﻿@{ 
+    var birthDate = new DateTime(1930, 8, 26);
+}
+
+<strong>Hello MVC Razor</strong>
+
+<p>James Bond, you were born @birthDate.ToString("dd-MMM-yyyy")</p>
+
+<p>James Bond is about @((DateTime.Now - birthDate).Days / 365) years old</p>
+
+<p>@("<strong>Hello World</strong>")</p>
+
+<p>@Html.Raw("<strong>james@bond.com</strong>")</p>
+
+@{ 
+    var isHungry = true;
+    var gender = 0;
+    IEnumerable<string> friends = new[] { "Thor", "Hulk", "Iron Man" };
+    var technology = "asp.net mvc";
+    var count = technology.Count();
+}
+
+@if (isHungry)
+{
+    <p>I'm hungry</p>
+}
+else
+{
+    <p>I'm full</p>
+}
+
+@switch (gender)
+{
+    case 0:
+        <p>Male</p>
+        break;
+    case 1:
+        <p>Female</p>
+        break;
+    default:
+        break;
+}
+
+@for (int i = 0; i < technology.Length; i++)
+{
+    // <text> because HTML being produced is not inside a tag
+    <text>@technology[i].ToString().ToUpper()</text> 
+}
+
+<ul>
+    @foreach (var item in friends)
+    {
+        <li>@item</li>
+    }
+</ul>
+
+@do
+{
+    // ASP.NET MVC in reverse
+    <text>@technology[count-1].ToString().ToUpper()</text>
+    count -= 1;
+} while (count > 0);
+
+@try
+{
+    var a = 1; var b = 0;
+    var result = a / b; // divide by zero
+}
+catch (Exception ex)
+{
+    <p>@ex.Message</p>
+}
